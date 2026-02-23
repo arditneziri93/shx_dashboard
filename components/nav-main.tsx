@@ -1,58 +1,70 @@
-"use client"
+"use client";
 
-import { IconCirclePlusFilled, IconMail, type Icon } from "@tabler/icons-react"
+import {
+  IconActivity,
+  IconCellSignal5,
+  IconChartBar,
+  IconLayoutDashboard,
+  IconPresentation,
+  IconPresentationAnalytics,
+  IconUser,
+  type Icon,
+} from "@tabler/icons-react";
 
-import { Button } from "@/components/ui/button"
 import {
   SidebarGroup,
-  SidebarGroupContent,
+  SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
 
-export function NavMain({
-  items,
-}: {
-  items: {
-    title: string
-    url: string
-    icon?: Icon
-  }[]
-}) {
+const items: { title: string; url: string; icon: Icon; isActive?: boolean }[] =
+  [
+    {
+      title: "Gesamtübersicht",
+      url: "#",
+      icon: IconLayoutDashboard,
+      isActive: true,
+    },
+    { title: "Activity Tracking", url: "#", icon: IconActivity },
+    { title: "Sales KPI - Monatlich", url: "#", icon: IconChartBar },
+    { title: "Vertriebs Overview", url: "#", icon: IconPresentation },
+    {
+      title: "Vertriebs Overview Neu",
+      url: "#",
+      icon: IconPresentationAnalytics,
+    },
+    { title: "Sales KPI - Max", url: "#", icon: IconUser },
+    { title: "Sales KPI - Semih", url: "#", icon: IconUser },
+    { title: "Sales KPI - Sam", url: "#", icon: IconUser },
+    { title: "Sales KPI - Yashar", url: "#", icon: IconUser },
+  ];
+
+export function NavMain() {
   return (
     <SidebarGroup>
-      <SidebarGroupContent className="flex flex-col gap-2">
-        <SidebarMenu>
-          <SidebarMenuItem className="flex items-center gap-2">
-            <SidebarMenuButton
-              tooltip="Quick Create"
-              className="bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground active:bg-primary/90 active:text-primary-foreground min-w-8 duration-200 ease-linear"
-            >
-              <IconCirclePlusFilled />
-              <span>Quick Create</span>
-            </SidebarMenuButton>
-            <Button
-              size="icon"
-              className="size-8 group-data-[collapsible=icon]:opacity-0"
-              variant="outline"
-            >
-              <IconMail />
-              <span className="sr-only">Inbox</span>
-            </Button>
-          </SidebarMenuItem>
-        </SidebarMenu>
-        <SidebarMenu>
-          {items.map((item) => (
-            <SidebarMenuItem key={item.title}>
-              <SidebarMenuButton tooltip={item.title}>
-                {item.icon && <item.icon />}
+      <SidebarMenu>
+        <SidebarMenuItem className="mb-2">
+          <SidebarMenuButton>
+            <IconCellSignal5 size={32} />
+            <span className="text-lg">Close CRM Expectleads</span>
+          </SidebarMenuButton>
+        </SidebarMenuItem>
+      </SidebarMenu>
+      <SidebarGroupLabel>expectleads - Sales Reporting</SidebarGroupLabel>
+      <SidebarMenu>
+        {items.map((item) => (
+          <SidebarMenuItem key={item.title}>
+            <SidebarMenuButton asChild isActive={item.isActive}>
+              <a href={item.url}>
+                <item.icon />
                 <span>{item.title}</span>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-          ))}
-        </SidebarMenu>
-      </SidebarGroupContent>
+              </a>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        ))}
+      </SidebarMenu>
     </SidebarGroup>
-  )
+  );
 }
