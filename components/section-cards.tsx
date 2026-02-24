@@ -17,7 +17,6 @@ import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import {
   Card,
   CardAction,
-  CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
@@ -284,13 +283,22 @@ function UmsatzCard() {
 export function SectionCards() {
   return (
     <div className="*:data-[slot=card]:from-primary/5 *:data-[slot=card]:to-card dark:*:data-[slot=card]:bg-card grid gap-4 px-4 *:data-[slot=card]:bg-gradient-to-t *:data-[slot=card]:shadow-xs lg:px-6">
-      {/* Time Range Selector */}
-      <div className="flex">
-        <ToggleGroup type="single" defaultValue="3months" variant="outline">
-          <ToggleGroupItem value="3months">Last 3 months</ToggleGroupItem>
-          <ToggleGroupItem value="30days">Last 30 days</ToggleGroupItem>
-          <ToggleGroupItem value="7days">Last 7 days</ToggleGroupItem>
-        </ToggleGroup>
+      {/* Filter — nur Desktop */}
+      <div className="hidden items-center justify-between md:flex">
+          <ToggleGroup type="single" defaultValue="year" variant="outline">
+            <ToggleGroupItem value="year">Dieses Jahr</ToggleGroupItem>
+            <ToggleGroupItem value="q1">Q1</ToggleGroupItem>
+            <ToggleGroupItem value="q2">Q2</ToggleGroupItem>
+            <ToggleGroupItem value="q3">Q3</ToggleGroupItem>
+            <ToggleGroupItem value="q4">Q4</ToggleGroupItem>
+          </ToggleGroup>
+
+          <ToggleGroup type="single" variant="outline">
+            <ToggleGroupItem value="max">Max</ToggleGroupItem>
+            <ToggleGroupItem value="semih">Semih</ToggleGroupItem>
+            <ToggleGroupItem value="sam">Sam</ToggleGroupItem>
+            <ToggleGroupItem value="yashar">Yashar</ToggleGroupItem>
+          </ToggleGroup>
       </div>
 
       {/* Reihe 1: 2 große Karten */}

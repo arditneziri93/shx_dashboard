@@ -1,4 +1,5 @@
 import { AppSidebar } from "@/components/app-sidebar";
+import { AovSection } from "@/components/aov-section";
 import { SalesCharts } from "@/components/sales-charts";
 import { DataTable } from "@/components/data-table";
 import { SectionCards } from "@/components/section-cards";
@@ -25,6 +26,7 @@ export default function Page() {
             <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6 max-w-[1280px] mx-auto w-full">
               <SectionCards />
               <SalesCharts />
+              <AovSection />
               <DataTable data={data} />
             </div>
           </div>
